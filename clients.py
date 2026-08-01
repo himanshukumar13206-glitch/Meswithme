@@ -16,20 +16,22 @@ from pytgcalls import PyTgCalls
 
 from config import API_ID, API_HASH, BOT_TOKEN, SESSION_STRING
 
+# Bot session (uses bot token)
 bot = Client(
-    name="meow_bot",
+    "@Meowwww_xbot",          # session name (string)
     api_id=API_ID,
     api_hash=API_HASH,
     bot_token=BOT_TOKEN,
-    in_memory=True,
+    in_memory=True,           # don't save session file locally
 )
 
+# Assistant user session (uses session string for voice chat)
 assistant = Client(
-    name="meow_assistant",
+    "meow_assistant",         # session name (string)
     api_id=API_ID,
     api_hash=API_HASH,
     session_string=SESSION_STRING,
     in_memory=True,
 )
 
-call_py = PyTgCalls(assistant)
+call_py = PyTgCalls(assistant)  # PyTgCalls uses the assistant to join VCs
