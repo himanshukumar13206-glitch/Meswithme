@@ -14,24 +14,22 @@ invite link) — it must be a member to join the VC.
 from pyrogram import Client
 from pytgcalls import PyTgCalls
 
-from config import API_ID, API_HASH, BOT_TOKEN, SESSION_STRING
+from config import API_ID, API_HASH, SESSION_STRING, BOT_SESSION_STRING
 
-# Bot session (uses bot token)
+# Bot session (uses session string)
 bot = Client(
-    "@Meowwww_xbot",          # session name (string)
+    "bot_session",              # arbitrary name, no file created
     api_id=API_ID,
     api_hash=API_HASH,
-    bot_token=BOT_TOKEN,
-    in_memory=True,           # don't save session file locally
+    session_string=BOT_SESSION_STRING,
 )
 
 # Assistant user session (uses session string for voice chat)
 assistant = Client(
-    "meow_assistant",         # session name (string)
+    "assistant_session",        # arbitrary name
     api_id=API_ID,
     api_hash=API_HASH,
     session_string=SESSION_STRING,
-    in_memory=True,
 )
 
 call_py = PyTgCalls(assistant)  # PyTgCalls uses the assistant to join VCs
